@@ -1,6 +1,6 @@
 # NifSendSample
 
-**TODO: Add description**
+Sample code of sending by NIFs (directly and with creating a thread).
 
 ## License
 
