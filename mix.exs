@@ -8,7 +8,8 @@ defmodule NifSendSample.MixProject do
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      compilers: [:elixir_make] ++ Mix.compilers
+      compilers: [:elixir_make] ++ Mix.compilers,
+      package: package()
     ]
   end
 
@@ -25,6 +26,19 @@ defmodule NifSendSample.MixProject do
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
       {:elixir_make, "~> 0.6", runtime: false}
+    ]
+  end
+
+  defp package do
+    [
+      files: [
+        "lib",
+        "LICENSE",
+        "mix.exs",
+        "README.md",
+        "nif_src/*.[ch]",
+        "Makefile"
+      ]
     ]
   end
 end
