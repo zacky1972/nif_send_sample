@@ -2,7 +2,7 @@ defmodule NifSendSample do
   require Logger
 
   @moduledoc """
-  Documentation for `NifSendSample`.
+  Sample code of sending by NIFs (directly and with creating a thread).
   """
 
   @on_load :load_nif
