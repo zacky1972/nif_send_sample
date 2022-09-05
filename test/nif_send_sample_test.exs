@@ -14,4 +14,17 @@ defmodule NifSendSampleTest do
     spawn(fn -> NifSendSample.send_nif(pid, :ping) end)
     assert_receive(:ping, 1_000)
   end
+
+  test "send_nif_threaded(self(), :ping)" do
+    refute_receive(:ping, 100)
+    NifSendSample.send_nif_threaded(self(), :ping)
+    assert_receive(:ping, 1_000)
+  end
+
+  test "spawn send_nif_threaded" do
+    refute_receive(:ping, 100)
+    pid = self()
+    spawn(fn -> NifSendSample.send_nif_threaded(pid, :ping) end)
+    assert_receive(:ping, 1_000)
+  end
 end

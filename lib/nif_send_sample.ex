@@ -19,4 +19,6 @@ defmodule NifSendSample do
   end
 
   def send_nif(_pid, _message), do: :erlang.nif_error(:not_loaded)
+
+  def send_nif_threaded(_pid, _message), do: :erlang.nif_error(:not_loaded)
 end
