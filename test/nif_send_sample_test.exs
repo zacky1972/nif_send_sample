@@ -9,16 +9,16 @@ defmodule NifSendSampleTest do
   end
 
   test "spawn send_nif" do
-    refute_receive(:ping, 100)
+    refute_receive(:pong, 100)
     pid = self()
-    spawn(fn -> NifSendSample.send_nif(pid, :ping) end)
-    assert_receive(:ping, 1_000)
+    spawn(fn -> NifSendSample.send_nif(pid, :pong) end)
+    assert_receive(:pong, 1_000)
   end
 
-  test "send_nif_threaded(self(), :ping)" do
-    refute_receive(:ping, 100)
-    NifSendSample.send_nif_threaded(self(), :ping)
-    assert_receive(:ping, 1_000)
+  test "send_nif_threaded(self(), :ok)" do
+    refute_receive(:ok, 100)
+    NifSendSample.send_nif_threaded(self(), :ok)
+    assert_receive(:ok, 1_000)
   end
 
   test "spawn send_nif_threaded" do
