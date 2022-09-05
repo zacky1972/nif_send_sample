@@ -19,17 +19,4 @@ defmodule NifSendSample do
   end
 
   def send_nif(_pid, _message), do: :erlang.nif_error(:not_loaded)
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> NifSendSample.hello()
-      :world
-
-  """
-  def hello do
-    :world
-  end
 end
